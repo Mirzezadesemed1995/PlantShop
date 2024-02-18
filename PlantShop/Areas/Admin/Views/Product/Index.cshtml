@@ -1,0 +1,48 @@
+﻿@using PlantShop.Models;
+@model List<Product>;
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Product Component</h5>
+        <div class=" my-3">
+            <a asp-action="create" asp-controller="Product" asp-area="admin" class="btn btn-outline-success">Create Product</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Photo</th>
+
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var productComponent in Model)
+                        {
+                            <tr>
+                                <th>@productComponent.Id</th>
+                                <td>
+
+                                    <img style="width:150px;height:150px;object-fit:cover" class="img-thumbnail" src="~/assets/img/@productComponent.FilePath" />
+
+                                </td>
+
+                                <td>@productComponent.Name</td>
+                                <td>
+                                    <a asp-action="update" asp-controller="Product" asp-area="admin" asp-route-id="@productComponent.Id" class="btn btn-outline-warning">Update</a>
+
+                                    <form method="post" asp-action="delete" asp-controller="Product" asp-area="admin" asp-route-id="@productComponent.Id">
+                                        <button class="btn btn-outline-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

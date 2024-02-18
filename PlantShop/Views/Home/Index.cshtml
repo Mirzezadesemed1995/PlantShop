@@ -1,0 +1,526 @@
+﻿@using PlantShop.ViewModels
+
+@model HomeIndexVM;
+<header class="header container-fluid p-4">
+    <div class="row justify-content-center align-items-center g-2">
+        <nav class="navbar navbar-expand-sm navbar-light d-flex justify-content-between">
+            <a class="navbar-brand text-light" asp-controller="home" asp-action="index">
+                <img src="assets/img/logo.png"
+                     class="img-fluid"
+                     alt=""
+                     style="height: 25px" />
+            </a>
+            <div>
+                <button class="navbar-toggler d-lg-none"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapsibleNavId"
+                        aria-controls="collapsibleNavId"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"></button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active"
+                               asp-controller="home" asp-action="index"
+                               aria-current="page">
+                                Home
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               asp-controller="shop" asp-action="index"
+                               id="dropdownId"
+                               data-bs-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false"><span>Shop</span> </a>
+                            <div class="dropdown-menu"
+                                 aria-labelledby="dropdownId">
+                                <a class="dropdown-item" asp-controller="cactus" asp-action="index">Cactus</a>
+                                <a class="dropdown-item" asp-controller="succulent" asp-action="index">Succulent</a>
+                                <a class="dropdown-item" asp-controller="indoorplants" asp-action="index">Indoor Plants</a>
+                                <a class="dropdown-item" asp-controller="bonsai" asp-action="index">Bonsai</a>
+                               
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About Us</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#testimonial">Testimonials</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="btn position-relative"
+                                    type="button"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#Id1"
+                                    aria-controls="Id1">
+                                <i class="fa-solid fa-basket-shopping text-success lative">
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                        0
+                                        <span class="visually-hidden">unread messages</span>
+                                    </span>
+                                </i>
+                            </button>
+
+                            <div class="offcanvas offcanvas-end"
+                                 data-bs-scroll="true"
+                                 tabindex="-1"
+                                 id="Id1"
+                                 aria-labelledby="Enable both scrolling & backdrop">
+                                <div class="offcanvas-header">
+                                    <h5 class="offcanvas-title"
+                                        id="Enable both scrolling & backdrop">
+                                        Shopping Cart
+                                    </h5>
+                                    <button type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <p>No products in the cart.</p>
+                                </div>
+                                <a type="button"
+                                   name=""
+                                   id=""
+                                   class="btn btn-success m-3"
+                                   href="shop.html">
+                                    Continue Shopping
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="row h-100 text-center justify-content-center align-items-center">
+        <div class="col text-light">
+            <h4>The Boutique Store For Plants!</h4>
+            <h1 class="display-1 my-5 fw-bold">
+                Everything Is Better <br />
+                With Plants
+            </h1>
+            <a name=""
+               id=""
+               class="btn btn-success px-5 py-2"
+               href="#"
+               role="button">Shop Now</a>
+        </div>
+    </div>
+</header>
+<section class="py-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-xl-3">
+                <a asp-controller="shop" asp-action="details" asp-route-id="id" class="card mb-3 border-0" style="max-width: 540px">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center justify-content-md-end">
+                            <img src="~/assets/img/1.png"
+                                 class="img-fluid rounded-start"
+                                 alt="Card title" />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">High Quality Plants</h5>
+                                <p class="card-text text-muted">
+                                    A line about the service you've mentioned
+                                    above.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card mb-3 border-0" style="max-width: 540px">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center justify-content-md-end">
+                            <img src="~/assets/img/2.png"
+                                 class="img-fluid rounded-start"
+                                 alt="Card title" />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Wide Plant Range</h5>
+                                <p class="card-text text-muted">
+                                    A line about the service you've mentioned
+                                    above.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card mb-3 border-0" style="max-width: 540px">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center justify-content-md-end">
+                            <img src="~/assets/img/3.png"
+                                 class="img-fluid rounded-start"
+                                 alt="Card title" />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Excellent Services</h5>
+                                <p class="card-text text-muted">
+                                    A line about the service you've mentioned
+                                    above.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+                <div class="card mb-3 border-0" style="max-width: 540px">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center justify-content-md-end">
+                            <img src="~/assets/img/4.png"
+                                 class="img-fluid rounded-start"
+                                 alt="Card title" />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Fast Delivery</h5>
+                                <p class="card-text text-muted">
+                                    A line about the service you've mentioned
+                                    above.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <a href="" class="link-dark text-decoration-none">
+                    <div class="card border-0">
+                        <img id="testimontial" class="card-img-top" src="~/assets/img/img1.jpg" alt="Title" />
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Cactus</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-3">
+                <a href="" class="link-dark text-decoration-none">
+                    <div class="card border-0">
+                        <img id="testimontial" class="card-img-top" src="~/assets/img/img2.jpg" alt="Title" />
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Bonsai</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-3">
+                <a href="" class="link-dark text-decoration-none">
+                    <div class="card border-0">
+                        <img id="testimontial" class="card-img-top" src="~/assets/img/img3.jpg" alt="Title" />
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Succulent</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-3">
+                <a href="" class="link-dark text-decoration-none">
+                    <div id="card" class="card border-0">
+                        <img id="testimontial" class="card-img-top" src="~/assets/img/img4.jpg" alt="Title" />
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Indoor Plants</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <div class="row justify-content-center align-items-center g-2">
+                <div class="col-12 col-xl-10">
+                    <h1 class="display-5 fw-bold">Featured Products</h1>
+                    <p class="col-md-8 fs-4">
+                        Use these paragraphs to focus on the topic in the
+                        headline. Make sure you keep it short and attractive.
+                    </p>
+                </div>
+
+                <div class="col-12 col-xl-2">
+                    <button class="btn btn-success btn-lg" type="button">
+                        View All Plants
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="one-row" class="py-4">
+    <div class="container-fluid">
+        <div id="second-row" class="row justify-content-center align-items-center g-2">
+
+            @foreach(var product in Model.Products)
+            {
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <a href="/shop/details/@product.Id" class="link-dark text-decoration-none">
+                        <div class="card border-0">
+                            <img class="card-img-top" src="~/assets/img/@product.FilePath" alt="Lemon Bonsai" />
+                            <div class="card-body text-center d-flex flex-column">
+                                <span class="fw-bolder">@product.Name</span>
+                                <span>
+                                    <del class="text-muted">$ @product.OldPrice</del>
+                                    <b>$ @product.NewPrice</b>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+          
+
+           
+        </div>
+    </div>
+</section>
+
+
+<!-- About -->
+<section class="py-5 my-5" id="about">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row justify-content-center align-items-center g-0">
+                    <div class="col-6">
+                        <img src="~/assets/img/left.jpg" class="img-fluid" />
+                    </div>
+                    <div class="col-6">
+                        <img src="~/assets/img/right.jpg" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 ms-lg-5 mt-4">
+                <h6 class="text-success fs-5">We Help Gardens Thrive!</h6>
+                <h2 class="display-5 fw-bold py-3">Nonummy Cum Convallis</h2>
+                <p>
+                    Elementum tristique mi montes nibh deserunt magna. Netus
+                    assumenda molestias nisi porro, nascetur molas. Habitant
+                    urna fugiat wisi nceptos sodales magna. Molestie
+                    suspendisse faucibus justo! Sollicitudin tempore unde,
+                    dolorem, blanditiis a nam beatae nihil bibendum, taciti.
+                </p>
+                <blockquote class="fs-5 fw-bold">
+                    <i class="fa-solid fa-quote-left text-success"></i><br />
+                    Tempore ut mauris aenean cillum ultrices nunc aliqu auris
+                    aenean mpore utma.
+                </blockquote>
+                <img src="~/assets/img/sign.png" alt="" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pt-5 mt-5">
+    <div class="row justify-content-center g-0 sty">
+        <div class="col-12 col-md-6">
+            <div class="card bg-dark text-light border-0 position-relative">
+                <img class="card-img"
+                     src="~/assets/img/card1.jpg"
+                     alt="Title"
+                     style="
+                        height: 450px;
+                        object-fit: cover;
+                        mix-blend-mode: soft-light;
+                     " />
+                <div class="card-img-overlay position-absolute top-50 bottom ms-4">
+                    <h4 class="card-title">Plants Care Instruction</h4>
+                    <p class="card-text">
+                        Each order includes a small care guide booklet.
+                    </p>
+                    <a name=""
+                       id=""
+                       class="btn btn-light"
+                       href="#"
+                       role="button">Shop Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card bg-dark text-light border-0 position-relative">
+                <img class="card-img"
+                     src="~/assets/img/card2.jpg"
+                     alt="Title"
+                     style="
+                        height: 450px;
+                        object-fit: cover;
+                        mix-blend-mode: soft-light;
+                     " />
+                <div class="card-img-overlay position-absolute top-50 bottom ms-4">
+                    <h4 class="card-title">Editor's Pick</h4>
+                    <p class="card-text">
+                        Find the best plants hand-picked by our editor.
+                    </p>
+                    <a name=""
+                       id=""
+                       class="btn btn-light"
+                       href="#"
+                       role="button">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="row justify-content-center g-0 sty">
+        <div class="col bg-img">
+            <div class="card bg-light text-dark border-0 position-relative">
+                <img class="card-img"
+                     src="~/assets/img/pic20-free-img-removebg-preview.png"
+                     alt="Title"
+                     style="
+                        height: 450px;
+                        object-fit: contain;
+                        object-position: 100%;
+                        mix-blend-mode: hard-light;
+                     " />
+                <div class="card-img-overlay bottom ms-4 text-center position-absolute"
+                     style="top: 100px">
+                    <h4 class="card-title display-4 fw-bold">
+                        Buy Online Now & Get 10% Off!
+                    </h4>
+                    <p class="card-text">
+                        Curae quia enim aute, consequatur, eius quaerat
+                        excepteur fames pharetra.
+                    </p>
+                    <a name=""
+                       id=""
+                       class="btn btn-success py-3 px-4"
+                       href="#"
+                       role="button">Avail Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonialbg py-5" id="testimonial">
+    <div class="card text-dark border-0 bg-transparent">
+        <div class="container">
+            <div class="row justify-content-center align-items-center g-2">
+                <div class="col text-center my-5">
+                    <h5>Testimonial</h5>
+                    <h2 class="mt-5">What Our Client Say</h2>
+                </div>
+            </div>
+
+            <div class="testimonial row justify-content-evenly align-items-center g-5">
+                <div class="col-12 col-md-5 bg-light rounded p-5 mb-4">
+                    <p class="fs-4">
+                        Suspendisse, occaecat exercitation est occaecati natoque
+                        sociis atque omnis! Habitant hendrerit eros, eum commodo
+                        quasi nihil nesciunt nonu aecenas aspernatur rattavc
+                        kaj.
+                    </p>
+                    <div>
+                        <img src="~/assets/img/person1.jpg"
+                             style="width:40px;height: 40px !important; margin-right: 10px"
+                             alt=""
+                             class="img-fluid rounded-circle h-75" />
+                        <b>Jeanice Ford </b>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 bg-light rounded p-5 mb-4">
+                    <p class="fs-4">
+                        Habitant urna fugiat wisi nceptos sodales magna.
+                        Molestie suspendisse faucibus justo! Sollicitudin
+                        tempore unde, dolorem, blanditiis a nam beatae nihil
+                        bibendum, taciti.
+                    </p>
+                    <div>
+                        <img src="~/assets/img/person2.jpg"
+                             style="width:40px; height: 40px !important; margin-right: 10px"
+                             alt=""
+                             class="img-fluid rounded-circle h-75" />
+                        <b>Katty Pierce </b>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 bg-light rounded p-5 mb-4">
+                    <p class="fs-4">
+                        Habitant urna fugiat wisi nceptos sodales magna.
+                        Molestie suspendisse faucibus justo! Sollicitudin
+                        tempore unde, dolorem, blanditiis a nam beatae nihil
+                        bibendum, taciti.
+                    </p>
+                    <div>
+                        <img src="~/assets/img/person3.jpg"
+                             style="width:40px ; height: 40px !important; margin-right: 10px"
+                             alt=""
+                             class="img-fluid rounded-circle h-75" />
+                        <b>Pedro Lima </b>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 bg-light rounded p-5 mb-4">
+                    <p class="fs-4">
+                        Suspendisse, occaecat exercitation est occaecati natoque
+                        sociis atque omnis! Habitant hendrerit eros, eum commodo
+                        quasi nihil nesciunt nonu aecenas aspernatur rattavc
+                        kaj.
+                    </p>
+                    <div>
+                        <img src="~/assets/img/person4.jpg"
+                             style="height: 40px !important; margin-right: 10px"
+                             alt=""
+                             class="img-fluid rounded-circle h-75" />
+                        <b> Laura Kyle </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-3">
+                <span>Address</span>
+                <address>123 Fifth Avenue, USA</address>
+            </div>
+            <div class="col-6">
+                <h3 class="display-3 py-1">Get In Touch</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                    elit tellus, luctus nec ullamcorper mattis, pulvinar
+                    dapibus leo.
+                </p>
+                <span>Call Us</span>
+                <p>123-456-7890</p>
+            </div>
+            <div class="col-3">
+                <span>Email Us </span>
+                <p>info@example.com</p>
+            </div>
+        </div>
+    </div>
+</section>

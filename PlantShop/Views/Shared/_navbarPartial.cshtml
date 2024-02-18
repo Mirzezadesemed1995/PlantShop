@@ -1,0 +1,104 @@
+﻿
+<style>
+    .nav-link, .dropdown-item {
+        color: #00ab84 !important;
+    }
+</style>
+<header class="container-fluid p-4 bg-light">
+    <div class="row justify-content-center align-items-center g-2">
+        <nav class="navbar navbar-expand-sm navbar-light d-flex justify-content-between">
+            <a class="navbar-brand text-light" asp-controller="home" asp-action="index">
+                <img src="~/assets/img/logo-green.png"
+                     class="img-fluid"
+                     alt=""
+                     style="height: 25px" />
+            </a>
+            <div>
+                <button class="navbar-toggler d-lg-none"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapsibleNavId"
+                        aria-controls="collapsibleNavId"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"></button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active"
+                               asp-controller="home" asp-action="index"
+                               aria-current="page">
+                                Home
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               asp-controller="shop" asp-action="index"
+                               id="dropdownId"
+                               data-bs-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false"><span href="/shop">Shop</span></a>
+                            <div class="dropdown-menu"
+                                 aria-labelledby="dropdownId">
+                                <a class="dropdown-item" asp-controller="cactus" asp-action="index">Cactus</a>
+                                <a class="dropdown-item" asp-controller="succulent" asp-action="index">Succulent</a>
+                                <a class="dropdown-item" asp-controller="IndoorPlants" asp-action="index">Indoor Plants</a>
+                                <a class="dropdown-item" asp-controller="bonsai" asp-action="index">Bonsai</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#about">About Us</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#testimonial">Testimonials</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="btn position-relative"
+                                    type="button"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#Id1"
+                                    aria-controls="Id1">
+                                <i class="fa-solid fa-basket-shopping text-success lative">
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                        0
+                                        <span class="visually-hidden">unread messages</span>
+                                    </span>
+                                </i>
+                            </button>
+
+                            <div class="offcanvas offcanvas-end"
+                                 data-bs-scroll="true"
+                                 tabindex="-1"
+                                 id="Id1"
+                                 aria-labelledby="Enable both scrolling & backdrop">
+                                <div class="offcanvas-header">
+                                    <h5 class="offcanvas-title"
+                                        id="Enable both scrolling & backdrop">
+                                        Shopping Cart
+                                    </h5>
+                                    <button type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <p>No products in the cart.</p>
+                                </div>
+                                <button type="button"
+                                        name=""
+                                        id=""
+                                        class="btn btn-success m-3">
+                                    Continue Shopping
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,67 @@
+﻿@using PlantShop.Areas.Admin.ViewModels.ProductVM
+@using PlantShop.Models
+
+
+@model ProductCategoryCreateVM
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">Add CategoryComponent</div>
+        <hr>
+        <form enctype="multipart/form-data" method="post" asp-action="create" asp-controller="product" asp-area="admin">
+            <div class="form-group">
+                <label asp-for="CreateProductVM.Name"></label>
+                <input asp-for="CreateProductVM.Name" class="form-control">
+                <span class="text-danger" asp-validation-for="CreateProductVM.Name"></span>
+            </div>
+            <div>
+                <label asp-for="CreateProductVM.NewPrice"></label>
+                <input asp-for="CreateProductVM.NewPrice" class="form-control">
+                <span class="text-danger" asp-validation-for="CreateProductVM.NewPrice"></span>
+            </div>
+            <div>
+                <label asp-for="CreateProductVM.OldPrice"></label>
+                <input asp-for="CreateProductVM.OldPrice" class="form-control">
+                <span class="text-danger" asp-validation-for="CreateProductVM.OldPrice"></span>
+            </div>
+            <div>
+                <label asp-for="CreateProductVM.Description"></label>
+                <textarea asp-for="CreateProductVM.Description" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="CreateProductVM.Description"></span>
+            </div>
+            <div class="form-group mt-3">
+                 <select asp-for="@Model.CreateProductVM.CategoryId" asp-items="Model.Category.Select(b=> new SelectListItem(){Text= b.Name.ToString() , Value=b.Id.ToString()})"></select>
+            </div>
+            <div class="form-group">
+                <select asp-for="CreateProductVM.Discount" class="form-control" asp-items="Html.GetEnumSelectList<Discount>()">
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CreateProductVM.MainPhoto"></label>
+                <input asp-for="CreateProductVM.MainPhoto" class="form-control">
+                <span class="text-danger" asp-validation-for="CreateProductVM.MainPhoto"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CreateProductVM.Files"></label>
+                <input multiple asp-for="CreateProductVM.Files" class="form-control">
+                <span class="text-danger" asp-validation-for="CreateProductVM.Files"></span>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-light px-5">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidatorForm")
+
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+    <script>
+
+        CKEDITOR.replace('CreateProductVM.Description');
+    </script>
+}

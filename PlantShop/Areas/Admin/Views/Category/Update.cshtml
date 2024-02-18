@@ -1,0 +1,34 @@
+﻿@using PlantShop.Areas.Admin.ViewModels.CategoryVM
+
+
+@model UpdateCategoryVM
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">Add CategoryComponent</div>
+        <hr>
+        <form enctype="multipart/form-data" method="post" asp-action="update" asp-controller="category" asp-area="admin" asp-route-id="@Model.Id">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control">
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+
+            <div class="form-group">
+              <img   src="~/assets/img/@Model.FilePath"  style=" width:60px; height:60px;" />
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="formFile"></label>
+                <input type="hidden" asp-for="FilePath" />
+                <input asp-for="formFile" class="form-control">
+                <span class="text-danger" asp-validation-for="formFile"></span>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-light px-5">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+

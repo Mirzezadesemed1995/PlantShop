@@ -1,0 +1,29 @@
+﻿@using PlantShop.Areas.Admin.ViewModels.GoogleMapVM;
+@model CreateGoogleMapVM
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">Add CategoryComponent</div>
+        <hr>
+        <form enctype="multipart/form-data" method="post" asp-action="create" asp-controller="GoogleMap" asp-area="admin">
+            <div class="form-group">
+                <label asp-for="@Model.MapUrl"></label>
+                <input asp-for="@Model.MapUrl" value="@Model.MapUrl" class="form-control">
+                <span class="text-danger" asp-validation-for="@Model.MapUrl"></span>
+            </div>
+       
+
+
+
+          
+            <div class="form-group">
+                <button class="btn btn-light px-5">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidatorForm")
+
+
+}

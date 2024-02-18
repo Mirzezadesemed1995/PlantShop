@@ -1,0 +1,43 @@
+﻿@using PlantShop.Models;
+@model List<HeaderInfo>;
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Category Component</h5>
+        <div class=" my-3">
+            <a asp-action="create" asp-controller="headerinfo" asp-area="admin" class="btn btn-outline-success">Create Header</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        
+
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var categoryComponent in Model)
+                        {
+                            <tr>
+                                <th>@categoryComponent.Id</th>
+                                
+                                <td>@categoryComponent.Title</td>
+                                <td>
+                                    <a asp-action="update" asp-controller="headerinfo" asp-area="admin" asp-route-id="@categoryComponent.Id" class="btn btn-outline-warning">Update</a>
+
+                                    <form method="post" asp-action="delete" asp-controller="headerInfo" asp-area="admin" asp-route-id="@categoryComponent.Id">
+                                        <button class="btn btn-outline-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

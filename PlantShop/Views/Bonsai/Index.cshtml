@@ -1,0 +1,139 @@
+﻿      <!-- Body Start -->
+ @using PlantShop.Models;
+ @model List<Product>
+@await Html.PartialAsync("_navbarPartial");
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center g-2">
+            <!-- Sidebar -->
+            <div class="col-3">
+                <form class="d-flex my-2 my-lg-0">
+                    <input class="form-control"
+                           type="text"
+                           placeholder="Search" />
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">
+                        Search
+                    </button>
+                </form>
+
+                <p class="mt-5 fw-bold">Categories</p>
+                <ul class="list-group border-0">
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-success">
+                        <a asp-controller="bonsai" asp-action="index" class="text-light text-decoration-none">Bonsai</a>
+                        <span class="badge bg-success badge-pill">(4)</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a asp-controller="cactus" asp-action="index" class="text-dark text-decoration-none">Cactus</a>
+                        <span class="badge bg-success badge-pill">(4)</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a asp-controller="IndoorPlants" asp-action="index" class="text-dark text-decoration-none">Indoor Plants</a>
+                        <span class="badge bg-success badge-pill">(4)</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a asp-controller="succulent" asp-action="index" class="text-dark text-decoration-none">Succulent</a>
+                        <span class="badge bg-success badge-pill">(4)</span>
+                    </li>
+                </ul>
+
+                <p class="mt-5 fw-bold">Filter By Price</p>
+                <form action="">
+                    <div class="row justify-content-center align-items-center g-2">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Min Price</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name=""
+                                       id=""
+                                       aria-describedby="helpId"
+                                       placeholder="$10" />
+                            </div>
+                        </div>
+                        _
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Max Price</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name=""
+                                       id=""
+                                       aria-describedby="helpId"
+                                       placeholder="$500" />
+                            </div>
+                        </div>
+                    </div>
+                    <input type="button"
+                           class="btn btn-success"
+                           value="Filter" />
+                </form>
+            </div>
+
+            <!-- Products -->
+            <div class="col-8 offset-1">
+                <div class="row justify-content-center align-items-center g-2">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-controller="home" asp-action="index">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    <aria-current="page">
+                                    Bonsai
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <h1 class="categories">Bonsai</h1>
+                <div class="row justify-content-center align-items-center g-2">
+                    <div class="col-9">Showing 1–12 of 17 results</div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <select class="form-select form-select-lg"
+                                    name=""
+                                    id="">
+                                <option selected>Default sorting</option>
+                                <option value="">Sort by popularity</option>
+                                <option value="">Sort by average rating</option>
+                                <option value="">latest</option>
+                                <option value="">
+                                    Sort by price: low to high
+                                </option>
+                                <option value="">
+                                    Sort by price: high to low
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center g-2 mb-4">
+                    @{
+                        foreach(var bonsai in Model)
+                        {
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <a asp-controller="shop" asp-action="details" asp-route-id="@bonsai.Id" class="link-dark text-decoration-none">
+                                    <div class="card border-0">
+                                        <img class="card-img-top"
+                                             src="~/assets/img/@bonsai.FilePath"
+                                             alt="Title" />
+                                        <div class="card-body text-center d-flex flex-column">
+                                            <span class="fw-bolder">@bonsai.Name</span>
+                                            <span>
+                                                <b>$@bonsai.OldPrice</b>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    }
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

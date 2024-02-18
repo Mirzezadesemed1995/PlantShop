@@ -1,0 +1,76 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using PlantShop.Areas.Admin.ViewModels.ProductVM
+@using PlantShop.Models
+
+
+@model ProductCategoryUpdateVM 
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">Add CategoryComponent</div>
+        <hr>
+        <form enctype="multipart/form-data" method="post" asp-action="update" asp-controller="product" asp-area="admin">
+            <input type="hidden" asp-for="UpdateProductVM.Id" class="form-control">
+
+            <div class="form-group">
+                <label asp-for="UpdateProductVM.Name"></label>
+                <input asp-for="UpdateProductVM.Name" class="form-control">
+                <span class="text-danger" asp-validation-for="UpdateProductVM.Name"></span>
+            </div>
+            <div>
+                <label asp-for="UpdateProductVM.NewPrice"></label>
+                <input asp-for="UpdateProductVM.NewPrice" class="form-control">
+                <span class="text-danger" asp-validation-for="UpdateProductVM.NewPrice"></span>
+            </div>
+            <div>
+                <label asp-for="UpdateProductVM.OldPrice"></label>
+                <input asp-for="UpdateProductVM.OldPrice" class="form-control">
+                <span class="text-danger" asp-validation-for="UpdateProductVM.OldPrice"></span>
+            </div>
+            <div>
+                <label asp-for="UpdateProductVM.Description"></label>
+                <textarea asp-for="UpdateProductVM.Description" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="UpdateProductVM.Description"></span>
+            </div>
+            <div class="form-group">
+                <select asp-for="@Model.UpdateProductVM.CategoryId" asp-items="Model.Category.Select(b=> new SelectListItem(){Text= b.Name , Value=b.Id.ToString()})"></select>
+            </div>
+            <div class="form-group">
+                <select asp-for="UpdateProductVM.Discount" class="form-control" asp-items="Html.GetEnumSelectList<Discount>()">
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UpdateProductVM.MainPhoto"></label>
+                <input type="hidden" asp-for="UpdateProductVM.MainPhoto" />
+                <input  asp-for="UpdateProductVM.MainPhoto" class="form-control">
+                <span class="text-danger" asp-validation-for="UpdateProductVM.MainPhoto"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UpdateProductVM.Files"></label>
+                <input type="hidden" asp-for="UpdateProductVM.FilePath" />
+                <input multiple asp-for="UpdateProductVM.Files" class="form-control">
+                <span class="text-danger" asp-validation-for="UpdateProductVM.Files"></span>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-light px-5">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidatorForm")
+
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+    <script>
+
+        CKEDITOR.replace('UpdateProductVM.Description');
+    </script>
+}
