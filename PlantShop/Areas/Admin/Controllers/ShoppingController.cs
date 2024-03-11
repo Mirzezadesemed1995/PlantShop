@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlantShop.Areas.Admin.ViewModels.PlantVM;
 using PlantShop.Areas.Admin.ViewModels.ShoppingVM;
@@ -9,6 +10,7 @@ using PlantShop.Models;
 namespace PlantShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ShoppingController : Controller
     {
         readonly private AppDbContext _context;

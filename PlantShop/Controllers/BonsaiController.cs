@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlantShop.DAL;
 
 namespace PlantShop.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     public class BonsaiController : Controller
     {
         readonly private AppDbContext _context;

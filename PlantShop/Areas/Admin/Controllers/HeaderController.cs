@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using PlantShop.Areas.Admin.ViewModels.HeaderVM;
@@ -9,6 +10,7 @@ using PlantShop.Models;
 namespace PlantShop.Areas.Admin.Controllers
 {
     [Area(nameof(Admin))]
+    [Authorize(Roles = "Admin")]
     public class HeaderController : Controller
     {
         readonly private AppDbContext _context;

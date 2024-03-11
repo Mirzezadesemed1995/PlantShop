@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿
+using Microsoft.AspNetCore.Identity;
 using PlantShop.Models;
 using PlantShop.Models.Identity;
 
-namespace PlantShop.DbInitilizar
+namespace PlantShop.DbInitializer
 {
     public class DbInitializer
     {
@@ -23,46 +24,33 @@ namespace PlantShop.DbInitilizar
             {
                 var user = new User
                 {
-                    FullName = "admin",
                     UserName = "admin",
                     Email = "admin@grow.com",
                 };
 
-                var password = "876.adDFaFR@#$";
-                var confirmPassword = "876.adDFaFR@#$";
+                var password = GenerateRandomPassword(); // Consider generating a secure password
 
-                
-                var changePasswordResult = await userManager.ChangePasswordAsync(user, confirmPassword, password);
+                var result = await userManager.CreateAsync(user, password);
 
-                if (changePasswordResult.Succeeded)
+                if (result.Succeeded)
                 {
-                    
-                    var result = await userManager.CreateAsync(user, password);
-
-                    if (result.Succeeded)
-                    {
-                       
-                        await userManager.AddToRoleAsync(user, RoleModel.Admin.ToString());
-                    }
-                    else
-                    {
-                      
-                        foreach (var error in result.Errors)
-                        {
-                            Console.WriteLine(error);
-                        }
-                    }
+                    await userManager.AddToRoleAsync(user, RoleModel.Admin.ToString());
                 }
                 else
                 {
-                    
-                    foreach (var error in changePasswordResult.Errors)
+                    // Handle errors appropriately
+                    foreach (var error in result.Errors)
                     {
-                        Console.WriteLine(error);
+                        Console.WriteLine(error.Description);
                     }
                 }
             }
         }
-    }
 
+        private static string GenerateRandomPassword()
+        {
+            
+            return "876.adDFaFR@#$";
+        }
+    }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlantShop.DAL;
 using PlantShop.Models;
@@ -6,6 +7,7 @@ using PlantShop.ViewModels;
 
 namespace PlantShop.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     public class ShopController : Controller
     {
         readonly AppDbContext _context;

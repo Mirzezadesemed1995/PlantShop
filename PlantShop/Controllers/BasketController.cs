@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlantShop.DAL;
@@ -7,6 +8,7 @@ using PlantShop.Models.Identity;
 
 namespace PlantShop.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     public class BasketController : Controller
     {
 

@@ -42,7 +42,7 @@
                                 <a class="dropdown-item" asp-controller="succulent" asp-action="index">Succulent</a>
                                 <a class="dropdown-item" asp-controller="indoorplants" asp-action="index">Indoor Plants</a>
                                 <a class="dropdown-item" asp-controller="bonsai" asp-action="index">Bonsai</a>
-                               
+
                             </div>
                         </li>
 
@@ -53,6 +53,41 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#testimonial">Testimonials</a>
                         </li>
+
+                        @{
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li>
+                                        <a href="/admin" class="nav-link">Admin Panel</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a class="nav-link">@User.Identity.Name</a>
+                                    </li>
+                                    <form method="post" asp-action="Logout" asp-controller="Account">
+                                    <li class="nav-item">
+                                        <button type="submit" class="btn btn-danger">Logout</button>
+                                    </li>
+                                    </form>
+                                }
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="Registration">Registration</a>
+                                </li>
+                            }
+
+                                     
+                        }
+                       
 
                         <li class="nav-item">
                             <button class="btn position-relative"
@@ -279,7 +314,7 @@
     <div class="container-fluid">
         <div id="second-row" class="row justify-content-center align-items-center g-2">
 
-            @foreach(var product in Model.Products)
+            @foreach (var product in Model.Products)
             {
                 <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
                     <a href="/shop/details/@product.Id" class="link-dark text-decoration-none">
@@ -296,9 +331,9 @@
                     </a>
                 </div>
             }
-          
 
-           
+
+
         </div>
     </div>
 </section>

@@ -66,11 +66,12 @@
 <div class="container-login">
     <div class="card-login">
         <h2>Login</h2>
-        <form>
+        <form asp-action="login" method="post" asp-controller="account">
             <input type="hidden"  asp-for="ReturnUrl" value="@returnUrl" />
             <input type="text" id="username" asp-for="Email" placeholder="Username" required>
             <input type="password" id="password" asp-for="Password" placeholder="Password" required>
             <button type="submit">Login</button>
+            <a asp-controller="account" asp-action="registration"> go to login </a>
         </form>
     </div>
 </div>

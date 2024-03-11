@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlantShop.Areas.Admin.ViewModels.CategoryVM;
 using PlantShop.Areas.Admin.ViewModels.ProductVM;
@@ -11,7 +12,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace PlantShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
 

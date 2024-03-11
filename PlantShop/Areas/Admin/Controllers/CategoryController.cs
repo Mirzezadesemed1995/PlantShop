@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlantShop.Areas.Admin.ViewModels.CategoryVM;
 using PlantShop.DAL;
@@ -9,7 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 namespace PlantShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
 

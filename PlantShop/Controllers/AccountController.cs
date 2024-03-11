@@ -18,13 +18,16 @@ namespace PlantShop.Controllers
             _signInManager = signInManager;
             _roleManager = roleManager;
         }
-        
+        public IActionResult Registration()
+        {
+            return View();
+        }
         public IActionResult Login()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> LoginAsync(LoginVM model)
+        public async Task<IActionResult> Login(LoginVM model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
 
@@ -37,7 +40,7 @@ namespace PlantShop.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction(model.ReturnUrl ?? "~/");
+                return Redirect("/");
             }
 
             ModelState.AddModelError(string.Empty, "Invalid login attempt"); 
@@ -53,6 +56,7 @@ namespace PlantShop.Controllers
 
             return View(model); 
         }
+        [HttpPost]
         public async Task<IActionResult> Registration(CreateRegistrationVM model)
         {
             foreach (var roleName in new[] { RoleModel.User.ToString() })
@@ -67,13 +71,10 @@ namespace PlantShop.Controllers
             var user = new User
             {
                
-                FullName= model.FullName,
+                UserName = model.FullName,
                 Email = model.Email
             };
-            var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.ConfirmPassword,model.Password );
 
-            if (changePasswordResult.Succeeded)
-            {
 
                 var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -91,8 +92,7 @@ namespace PlantShop.Controllers
                     return RedirectToAction(nameof(Login));
                 }
 
-              
-            }
+            
             ModelState.AddModelError(string.Empty, "Invalid login attempt");
             return View(model);
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlantShop.Areas.Admin.ViewModels.GoogleMapVM;
 using PlantShop.DAL;
@@ -8,6 +9,7 @@ using PlantShop.Models;
 namespace PlantShop.Areas.Admin.Controllers
 {
     [Area(nameof(Admin))]
+    [Authorize(Roles = "Admin")]
     public class GoogleMapController : Controller
     {
         readonly private AppDbContext _context;

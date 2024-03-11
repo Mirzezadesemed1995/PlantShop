@@ -65,12 +65,13 @@
 <div class="container-login">
     <div class="card-login">
         <h2>Login</h2>
-        <form>
+        <form asp-action="registration" method="post" asp-controller="account">
             <input type="text" id="username" asp-for="FullName" placeholder="Username" required>
-            <input type="text" id="username" asp-for="Email" placeholder="Username" required>
+            <input type="text" id="username" asp-for="Email" placeholder="E-mail" required>
             <input type="password" id="password" asp-for="Password" placeholder="Password" required>
-            <input type="password" id="password" asp-for="ConfirmPassword" placeholder="Password" required>
+            <input type="password" id="password" asp-for="ConfirmPassword" placeholder="Confirm Password" required>
             <button type="submit">Login</button>
+            <a asp-controller="account" asp-action="login"> go to login </a>
         </form>
     </div>
 </div>

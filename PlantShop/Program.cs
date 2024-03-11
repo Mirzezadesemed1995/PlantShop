@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PlantShop.DAL;
-using PlantShop.DbInitilizar;
+using PlantShop.DbInitializer;
 using PlantShop.Helpers;
 using PlantShop.Models.Identity;
 
@@ -32,6 +32,8 @@ app.MapControllerRoute(
             pattern: "{area:exists}/{controller=dashboard}/{action=index}/{id?}");
 
 app.MapDefaultControllerRoute();
+app.UseAuthentication();
+app.UseAuthorization();
 var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
 using (var scope = scopeFactory.CreateScope())
 {
