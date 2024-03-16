@@ -1,5 +1,9 @@
-﻿@using PlantShop.ViewModels
+﻿@using PlantShop.Models
+@using PlantShop.ViewModels
+@{
+    var user = User.Identity.Name;
 
+}
 @model HomeIndexVM;
 <header class="header container-fluid p-4">
     <div class="row justify-content-center align-items-center g-2">
@@ -65,6 +69,80 @@
                                 }
                                 else
                                 {
+                                    <li class="nav-item">
+                                        <button class="btn position-relative"
+                                        type="button"
+                                        data-bs-toggle="offcanvas"
+                                        data-bs-target="#Id1"
+                                        aria-controls="Id1">
+                                            <i class="fa-solid fa-basket-shopping text-success lative">
+                                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                                    0
+                                                    <span class="visually-hidden">unread messages</span>
+                                                </span>
+                                            </i>
+                                        </button>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <div class="offcanvas offcanvas-end"
+                                                 data-bs-scroll="true"
+                                                 tabindex="-1"
+                                                 id="Id1"
+                                                 aria-labelledby="Enable both scrolling & backdrop">
+                                                <div class="offcanvas-header">
+                                                    <h5 class="offcanvas-title"
+                                                        id="Enable both scrolling & backdrop">
+                                                        Shopping Cart
+                                                    </h5>
+                                                    <button type="button"
+                                                            class="btn-close"
+                                                            data-bs-dismiss="offcanvas"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="offcanvas-body">
+                                                    @{
+                                                        if (Model.UserBasket != null && Model.UserBasket.Any())
+                                                        {
+                                                            foreach (var userBasket in Model.UserBasket)
+                                                            {
+                                                                <div class="row-basket">
+                                                                    <div class="basket">
+                                                                        @if (Model.Baskets != null && Model.Baskets.Any(a => a.User != null && a.User.Id == Model.User.Id) )
+                                                                        {
+                                                                            foreach (var pr in Model.Products)
+                                                                            {
+                                                                                if (Model.Baskets.Any(a => userBasket.BasketId == a.Id && a.User != null && a.User.Id == Model.User.Id) && userBasket.ProductId == pr.Id)
+                                                                                {
+                                                                                    <p>@pr.Name - @userBasket.Quantity</p>
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <p>No items found in the basket.</p>
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>No items found in the basket.</p>
+                                                        }
+                                                    }
+                                                </div>
+
+                                                <a type="button"
+                                                   name=""
+                                                   id=""
+                                                   class="btn btn-success m-3"
+                                                   href="shop.html">
+                                                    Continue Shopping
+                                                </a>
+                                            </div>
+                                        }
+                                      
+                                    </li>
                                     <li>
                                         <a class="nav-link">@User.Identity.Name</a>
                                     </li>
@@ -85,51 +163,11 @@
                                 </li>
                             }
 
-                                     
+
                         }
-                       
 
-                        <li class="nav-item">
-                            <button class="btn position-relative"
-                                    type="button"
-                                    data-bs-toggle="offcanvas"
-                                    data-bs-target="#Id1"
-                                    aria-controls="Id1">
-                                <i class="fa-solid fa-basket-shopping text-success lative">
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                                        0
-                                        <span class="visually-hidden">unread messages</span>
-                                    </span>
-                                </i>
-                            </button>
 
-                            <div class="offcanvas offcanvas-end"
-                                 data-bs-scroll="true"
-                                 tabindex="-1"
-                                 id="Id1"
-                                 aria-labelledby="Enable both scrolling & backdrop">
-                                <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title"
-                                        id="Enable both scrolling & backdrop">
-                                        Shopping Cart
-                                    </h5>
-                                    <button type="button"
-                                            class="btn-close"
-                                            data-bs-dismiss="offcanvas"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="offcanvas-body">
-                                    <p>No products in the cart.</p>
-                                </div>
-                                <a type="button"
-                                   name=""
-                                   id=""
-                                   class="btn btn-success m-3"
-                                   href="shop.html">
-                                    Continue Shopping
-                                </a>
-                            </div>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -314,7 +352,7 @@
     <div class="container-fluid">
         <div id="second-row" class="row justify-content-center align-items-center g-2">
 
-            @foreach (var product in Model.Products)
+            @foreach (var product in Model.Products.Take(4))
             {
                 <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
                     <a href="/shop/details/@product.Id" class="link-dark text-decoration-none">
@@ -323,8 +361,18 @@
                             <div class="card-body text-center d-flex flex-column">
                                 <span class="fw-bolder">@product.Name</span>
                                 <span>
-                                    <del class="text-muted">$ @product.OldPrice</del>
-                                    <b>$ @product.NewPrice</b>
+                                    @{
+                                        if (product.Discount == Discount.Sale)
+                                        {
+                                            <del class="text-muted">$ @product.OldPrice</del>
+                                            <b>$ @product.NewPrice</b>
+                                        }
+                                        else
+                                        {
+                                            <del class="text-muted">$ @product.OldPrice</del>
+                                        }
+                                    }
+                                    
                                 </span>
                             </div>
                         </div>

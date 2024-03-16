@@ -10160,6 +10160,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\69f8e949-2d8c-4dba-8754-52d14285d99f_rubber-tree-1280788_1920-100x100.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\74b4e264-ca83-4417-bf29-6cb0bfbe7049_pic49-free-img (2).jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>PlantShop</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/PlantShop</BasePath>
+      <RelativePath>assets/img/74b4e264-ca83-4417-bf29-6cb0bfbe7049_pic49-free-img (2).jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\74b4e264-ca83-4417-bf29-6cb0bfbe7049_pic49-free-img (2).jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\74f27597-9a09-475f-8098-3a3238144976_img4.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>PlantShop</SourceId>

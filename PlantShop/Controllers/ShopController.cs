@@ -18,7 +18,7 @@ namespace PlantShop.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            List<Product> product = await _context.Product.Include(p=>p.Categories).ToListAsync();
+            List<Product> product = await _context.Product.Include(p => p.Categories).ToListAsync();
             return View(product);
         }
 
@@ -26,12 +26,13 @@ namespace PlantShop.Controllers
         {
             var product = await _context.Product.FindAsync(id);
             var files = await _context.Files.ToListAsync();
-            var category = await _context.Category.Include(a=>a.Product).FirstOrDefaultAsync();   
+            var category = await _context.Category.Include(a => a.Product).FirstOrDefaultAsync();
             if (product == null) return BadRequest();
-            ShopDetailsVM vm = new ShopDetailsVM() { 
-            Files=files,
-            Product=product,
-            Category =category
+            ShopDetailsVM vm = new ShopDetailsVM()
+            {
+                Files = files,
+                Product = product,
+                Category = category
             };
 
             return View(vm);

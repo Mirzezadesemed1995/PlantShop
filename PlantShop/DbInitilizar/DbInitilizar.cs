@@ -28,9 +28,8 @@ namespace PlantShop.DbInitializer
                     Email = "admin@grow.com",
                 };
 
-                var password = GenerateRandomPassword(); // Consider generating a secure password
-
-                var result = await userManager.CreateAsync(user, password);
+                var password = GenerateRandomPassword(); 
+                var result = await userManager.CreateAsync(user, "876.adDFaFR@#$");
 
                 if (result.Succeeded)
                 {

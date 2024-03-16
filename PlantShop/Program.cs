@@ -27,13 +27,15 @@ builder.Services.AddScoped<IFileService , FileService>();
 var app = builder.Build();
 
 app.UseStaticFiles();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllerRoute(
        name: "areas",
             pattern: "{area:exists}/{controller=dashboard}/{action=index}/{id?}");
 
 app.MapDefaultControllerRoute();
-app.UseAuthentication();
-app.UseAuthorization();
+
+
 var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
 using (var scope = scopeFactory.CreateScope())
 {

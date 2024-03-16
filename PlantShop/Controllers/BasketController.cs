@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using PlantShop.DAL;
 using PlantShop.Models;
 using PlantShop.Models.Identity;
+using System.Net;
 
 namespace PlantShop.Controllers
 {
@@ -22,7 +23,8 @@ namespace PlantShop.Controllers
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
         }
-        public async Task<IActionResult> Add(string id)
+        [HttpPost]
+        public async Task<IActionResult> Add(int id, int  quantity)
         {
             var username = _httpContextAccessor?.HttpContext?.User?.Identity?.Name;
 
@@ -36,40 +38,61 @@ namespace PlantShop.Controllers
 
                 if (product != null)
                 {
-                    var userBasket = await _context.Baskets.FirstOrDefaultAsync(b => b.UserId == user.Id);
+                    var basket = await _context.Baskets.FirstOrDefaultAsync(b => b.UserId == user.Id);
 
-                    if (userBasket == null)
+                    if (basket == null)
                     {
-                        userBasket = new Basket
+                        basket = new Basket
                         {
                             UserId = user.Id,
                         };
 
-                        await _context.Baskets.AddAsync(userBasket);
+                        await _context.Baskets.AddAsync(basket);
                         await _context.SaveChangesAsync();
+                        var userBaskets = await _context.UserBaskets.FirstOrDefaultAsync(c => c.ProductId == id && c.BasketId ==basket.Id);
+
+                       
+                            userBaskets = new UserBasket
+                            {
+                                BasketId = basket.Id,
+                                ProductId = product.Id,
+                                Quantity = quantity
+                            };
+
+                            await _context.UserBaskets.AddAsync(userBaskets);
+                            await _context.SaveChangesAsync();
+                        
                     }
-
-                    var userBaskets = await _context.UserBaskets.FirstOrDefaultAsync(c => c.ProductId.ToString() == id);
-
-                    if (userBaskets == null)
+                    else
                     {
-                        userBaskets = new UserBasket
-                        {
-                            BasketId = userBasket.Id,
-                            ProductId = product.Id,
-                            Quantity = 1
-                        };
+                        var userBaskets = await _context.UserBaskets.FirstOrDefaultAsync(c => c.ProductId == id && c.BasketId==basket.Id);
 
-                        await _context.UserBaskets.AddAsync(userBaskets);
-                        await _context.SaveChangesAsync();
+                        if (userBaskets == null)
+                        {
+                            userBaskets = new UserBasket
+                            {
+                                BasketId = basket.Id,
+                                ProductId = product.Id,
+                                Quantity = quantity
+                            };
+
+                            await _context.UserBaskets.AddAsync(userBaskets);
+                            await _context.SaveChangesAsync();
+                        }
+                        else
+                        {
+                            userBaskets.Quantity += quantity;
+                            await _context.SaveChangesAsync();
+                        }
                     }
-                    userBaskets.Quantity++;
-                    await _context.SaveChangesAsync();
+
+                   
+                  
                 }
             }
 
-            return Ok();
-        }
+			return StatusCode((int)HttpStatusCode.Created);
+		}
 
     }
 

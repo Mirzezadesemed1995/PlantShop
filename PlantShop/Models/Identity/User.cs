@@ -9,8 +9,6 @@ namespace PlantShop.Models.Identity
 
         
 
-        // Password property is not needed as ASP.NET Identity handles password internally
-
        
 
         public ICollection<Basket> Baskets { get; set; }

@@ -66,6 +66,46 @@
                                 }
                                 else
                                 {
+                                    <li class="nav-item">
+                                        <button class="btn position-relative"
+                                                type="button"
+                                                data-bs-toggle="offcanvas"
+                                                data-bs-target="#Id1"
+                                                aria-controls="Id1">
+                                            <i class="fa-solid fa-basket-shopping text-success lative">
+                                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                                    0
+                                                    <span class="visually-hidden">unread messages</span>
+                                                </span>
+                                            </i>
+                                        </button>
+
+                                        <div class="offcanvas offcanvas-end"
+                                             data-bs-scroll="true"
+                                             tabindex="-1"
+                                             id="Id1"
+                                             aria-labelledby="Enable both scrolling & backdrop">
+                                            <div class="offcanvas-header">
+                                                <h5 class="offcanvas-title"
+                                                    id="Enable both scrolling & backdrop">
+                                                    Shopping Cart
+                                                </h5>
+                                                <button type="button"
+                                                        class="btn-close"
+                                                        data-bs-dismiss="offcanvas"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="offcanvas-body">
+                                                <p>No products in the cart.</p>
+                                            </div>
+                                            <button type="button"
+                                                    name=""
+                                                    id=""
+                                                    class="btn btn-success m-3">
+                                                Continue Shopping
+                                            </button>
+                                        </div>
+                                    </li>
                                     <li>
                                         <a class="nav-link">@User.Identity.Name</a>
                                     </li>
@@ -90,46 +130,7 @@
                         }
 
 
-                        <li class="nav-item">
-                            <button class="btn position-relative"
-                                    type="button"
-                                    data-bs-toggle="offcanvas"
-                                    data-bs-target="#Id1"
-                                    aria-controls="Id1">
-                                <i class="fa-solid fa-basket-shopping text-success lative">
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
-                                        0
-                                        <span class="visually-hidden">unread messages</span>
-                                    </span>
-                                </i>
-                            </button>
-
-                            <div class="offcanvas offcanvas-end"
-                                 data-bs-scroll="true"
-                                 tabindex="-1"
-                                 id="Id1"
-                                 aria-labelledby="Enable both scrolling & backdrop">
-                                <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title"
-                                        id="Enable both scrolling & backdrop">
-                                        Shopping Cart
-                                    </h5>
-                                    <button type="button"
-                                            class="btn-close"
-                                            data-bs-dismiss="offcanvas"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="offcanvas-body">
-                                    <p>No products in the cart.</p>
-                                </div>
-                                <button type="button"
-                                        name=""
-                                        id=""
-                                        class="btn btn-success m-3">
-                                    Continue Shopping
-                                </button>
-                            </div>
-                        </li>
+                     
                     </ul>
                 </div>
             </div>

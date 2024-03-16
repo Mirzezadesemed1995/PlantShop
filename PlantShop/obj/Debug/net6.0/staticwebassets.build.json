@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "e6ezYj3emJjdjx2WkVhgp1YZ9/Q99MC+HFtgHk6C4Jk=",
+  "Hash": "GmxSoCaEos8zc/46pVdZlyRQipF8lk7jyvY8Py4bU7U=",
   "Source": "PlantShop",
   "BasePath": "_content/PlantShop",
   "Mode": "Default",
@@ -12080,6 +12080,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\69f8e949-2d8c-4dba-8754-52d14285d99f_rubber-tree-1280788_1920-100x100.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Toshiba\\source\\repos\\PlantShop\\PlantShop\\wwwroot\\assets\\img\\74b4e264-ca83-4417-bf29-6cb0bfbe7049_pic49-free-img (2).jpg",
+      "SourceId": "PlantShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Toshiba\\source\\repos\\PlantShop\\PlantShop\\wwwroot\\",
+      "BasePath": "_content/PlantShop",
+      "RelativePath": "assets/img/74b4e264-ca83-4417-bf29-6cb0bfbe7049_pic49-free-img (2).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\74b4e264-ca83-4417-bf29-6cb0bfbe7049_pic49-free-img (2).jpg"
     },
     {
       "Identity": "C:\\Users\\Toshiba\\source\\repos\\PlantShop\\PlantShop\\wwwroot\\assets\\img\\74f27597-9a09-475f-8098-3a3238144976_img4.jpg",

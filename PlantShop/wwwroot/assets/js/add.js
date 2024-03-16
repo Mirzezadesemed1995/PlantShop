@@ -1,25 +1,4 @@
-﻿const imgs = document.querySelectorAll('.img-select a');
-const imgBtns = [...imgs];
-let imgId = 1;
-
-imgBtns.forEach((imgItem) => {
-    imgItem.addEventListener('click', (event) => {
-        event.preventDefault();
-        imgId = imgItem.dataset.id;
-        slideImage();
-    });
-});
-
-function slideImage() {
-    const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
-
-    document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
-}
-
-window.addEventListener('resize', slideImage);
-
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
 	var slider = $("#slider");
 	var thumb = $("#thumb");
 	var slidesPerPage = 4; //globaly define number of elements per page
@@ -27,8 +6,7 @@ $(document).ready(function () {
 	slider.owlCarousel({
 		items: 1,
 		slideSpeed: 2000,
-		nav: false,
-		autoplay: false,
+	        autoplay: false,
 		dots: false,
 		loop: true,
 		responsiveRefreshRate: 200
@@ -85,17 +63,53 @@ $(document).ready(function () {
 	});
 
 
-	$(".qtyminus").on("click", function () {
-		var now = $(".qty").val();
-		if ($.isNumeric(now)) {
-			if (parseInt(now) - 1 > 0) { now--; }
-			$(".qty").val(now);
-		}
-	})
-	$(".qtyplus").on("click", function () {
-		var now = $(".qty").val();
-		if ($.isNumeric(now)) {
-			$(".qty").val(parseInt(now) + 1);
-		}
-	});
+
 });
+$(document).ready(() => {
+
+	var id = $('#quantity').data('id');
+
+	$('.qtyplus').on("click", () => {
+		var quantity = +$('#quantity').val();
+
+		quantity++;
+
+
+		$('#quantity').val(quantity);
+	});
+
+	$('.qtyminus').on("click", (e) => {
+		var quantity = +$('#quantity').val();
+		if (quantity > 1) {
+			quantity--;
+		} else {
+			e.preventDefault();
+		}
+		$('#quantity').val(quantity);
+	});
+
+	$('.round-black-btn').on("click", function (e) {
+		var quantity = +$('#quantity').val();
+		$('#quantity').val(quantity);
+
+		updateBasket(id, quantity);
+
+	});
+
+	function updateBasket(id, quantity) {
+		$.ajax({
+			url: "/Basket/Add",
+			type: 'POST',
+			data: {
+				id: id,
+				quantity: quantity,
+			},
+			success: function (response) {
+				location.reload();
+			},
+			error: function (error) {
+				console.error(error);
+			}
+		});
+	}
+})
